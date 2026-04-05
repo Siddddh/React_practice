@@ -6,11 +6,36 @@ Uses WeasyPrint for PDF generation and Playwright for image screenshots.
 
 import logging
 import os
+import re
 from datetime import datetime, timezone
 
 from config import OUTPUT_DIR
 
 logger = logging.getLogger(__name__)
+
+# Pattern for valid brand keys: alphanumeric, underscores, and hyphens only
+_SAFE_BRAND_KEY_PATTERN = re.compile(r"^[a-zA-Z0-9_-]+$")
+
+
+def _sanitize_brand_key(brand_key: str) -> str:
+    """
+    Sanitize the brand key to prevent path traversal attacks.
+
+    Args:
+        brand_key: Brand identifier to sanitize.
+
+    Returns:
+        Sanitized brand key string.
+
+    Raises:
+        ValueError: If the brand key contains invalid characters.
+    """
+    if not _SAFE_BRAND_KEY_PATTERN.match(brand_key):
+        raise ValueError(
+            f"Invalid brand key '{brand_key}': "
+            "must contain only alphanumeric characters, underscores, and hyphens."
+        )
+    return brand_key
 
 
 def _ensure_output_dir(brand_key: str) -> str:
@@ -22,10 +47,18 @@ def _ensure_output_dir(brand_key: str) -> str:
 
     Returns:
         Absolute path to the brand's output directory.
+
+    Raises:
+        ValueError: If the brand key is invalid.
     """
-    brand_dir = os.path.join(OUTPUT_DIR, brand_key)
-    os.makedirs(brand_dir, exist_ok=True)
-    return brand_dir
+    safe_key = _sanitize_brand_key(brand_key)
+    brand_dir = os.path.join(OUTPUT_DIR, safe_key)
+    # Verify the resolved path is still under OUTPUT_DIR
+    resolved = os.path.realpath(brand_dir)
+    if not resolved.startswith(os.path.realpath(OUTPUT_DIR)):
+        raise ValueError("Resolved output path escapes the output directory.")
+    os.makedirs(resolved, exist_ok=True)
+    return resolved
 
 
 def _generate_filename(brand_key: str, variation_index: int, extension: str) -> str:

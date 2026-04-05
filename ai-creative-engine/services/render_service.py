@@ -5,6 +5,7 @@ Handles rendering of HTML templates with brand and content data.
 """
 
 import logging
+import os
 from typing import Any, Dict
 
 from jinja2 import Environment, FileSystemLoader, TemplateNotFound
@@ -81,8 +82,6 @@ def _load_css() -> str:
     Returns:
         CSS content as a string, or empty string if file not found.
     """
-    import os
-
     css_path = os.path.join(STATIC_DIR, "styles.css")
     try:
         with open(css_path, "r", encoding="utf-8") as f:

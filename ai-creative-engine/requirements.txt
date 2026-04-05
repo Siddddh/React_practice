@@ -1,4 +1,5 @@
 # AI Creative Engine - Dependencies
+# Requires Python >= 3.10
 # Run: pip install -r requirements.txt
 
 # Web Framework
