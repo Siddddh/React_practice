@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ brand.name }} - {{ content.headline }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family={{ font | urlencode }}:wght@400;600;700&family={{ font_body | urlencode }}:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        {{ css }}
+
+        :root {
+            --color-primary: {{ colors.primary }};
+            --color-secondary: {{ colors.secondary }};
+            --color-background: {{ colors.background }};
+            --color-text: {{ colors.text }};
+            --color-accent: {{ colors.accent }};
+            --font-heading: '{{ font }}', serif;
+            --font-body: '{{ font_body }}', sans-serif;
+        }
+    </style>
+</head>
+<body class="brochure theme-{{ theme }}">
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="brand-label">{{ brand.name }}</p>
+            <h1 class="headline">{{ content.headline }}</h1>
+            <p class="subheadline">{{ content.subheadline }}</p>
+        </div>
+    </header>
+
+    <!-- Content Sections -->
+    <main class="sections-container">
+        {% for section in content.sections %}
+        <section class="content-section {% if loop.index is odd %}section-light{% else %}section-dark{% endif %}">
+            <div class="section-inner">
+                <div class="section-number">{{ "%02d" | format(loop.index) }}</div>
+                <h2 class="section-title">{{ section.title }}</h2>
+                <p class="section-text">{{ section.text }}</p>
+            </div>
+        </section>
+        {% endfor %}
+    </main>
+
+    <!-- CTA Section -->
+    <footer class="cta-section">
+        <div class="cta-inner">
+            <div class="cta-decoration"></div>
+            <p class="cta-text">{{ content.cta }}</p>
+            <a href="#" class="cta-button">Get Started</a>
+            <p class="brand-footer">{{ brand.name }}</p>
+        </div>
+    </footer>
+</body>
+</html>
