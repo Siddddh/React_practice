@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+ai-creative-engine/outputs/*
+!ai-creative-engine/outputs/.gitkeep

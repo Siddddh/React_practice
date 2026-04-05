@@ -1,0 +1,25 @@
+# AI Creative Engine - Dependencies
+# Requires Python >= 3.10
+# Run: pip install -r requirements.txt
+
+# Web Framework
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+
+# AI / LLM
+openai==1.58.1
+
+# Template Rendering
+Jinja2==3.1.5
+
+# PDF Export
+weasyprint==68.0
+
+# Image Export (Playwright)
+playwright==1.49.1
+
+# Data Validation (included with FastAPI, pinned for clarity)
+pydantic==2.10.4
+
+# Utilities
+python-multipart==0.0.22

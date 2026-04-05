@@ -1,0 +1,439 @@
+/* ================================================
+   AI Creative Engine - Base Styles & Theme System
+   ================================================ */
+
+/* Reset & Base */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background: var(--color-background);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ================================================
+   BROCHURE STYLES
+   ================================================ */
+
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    overflow: hidden;
+    padding: 60px 40px;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        rgba(0, 0, 0, 0.3) 100%
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+}
+
+.brand-label {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 24px;
+}
+
+.headline {
+    font-family: var(--font-heading);
+    font-size: 52px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.subheadline {
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Content Sections */
+.sections-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.content-section {
+    padding: 60px 40px;
+}
+
+.section-light {
+    background: var(--color-background);
+}
+
+.section-dark {
+    background: #ffffff;
+}
+
+.section-inner {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.section-number {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--color-accent);
+    opacity: 0.3;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+}
+
+.section-text {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-text);
+    line-height: 1.8;
+}
+
+/* CTA Section */
+.cta-section {
+    background: var(--color-primary);
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.cta-inner {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-decoration {
+    width: 60px;
+    height: 3px;
+    background: var(--color-accent);
+    margin: 0 auto 30px;
+}
+
+.cta-text {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 30px;
+    line-height: 1.3;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--color-secondary);
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 0.2s;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+}
+
+.brand-footer {
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 40px;
+}
+
+/* ================================================
+   SOCIAL POST STYLES
+   ================================================ */
+
+.social-post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: #f0f0f0;
+}
+
+.social-card {
+    width: 1080px;
+    min-height: 1080px;
+    background: var(--color-background);
+    border-radius: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.social-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 40px 50px 20px;
+}
+
+.brand-mark {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.brand-name-small {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-text);
+    opacity: 0.6;
+}
+
+.social-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 50px;
+}
+
+.social-headline {
+    font-family: var(--font-heading);
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.social-subheadline {
+    font-family: var(--font-body);
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--color-text);
+    opacity: 0.75;
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+.social-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    border-left: 3px solid var(--color-accent);
+}
+
+.highlight-icon {
+    color: var(--color-accent);
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.highlight-text {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.social-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 50px;
+    background: var(--color-primary);
+}
+
+.social-cta {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.social-arrow {
+    font-size: 32px;
+    color: var(--color-accent);
+}
+
+/* ================================================
+   THEME: LUXURY
+   ================================================ */
+
+.theme-luxury .hero {
+    min-height: 550px;
+    background: linear-gradient(
+        160deg,
+        var(--color-primary) 0%,
+        #0f0f23 100%
+    );
+}
+
+.theme-luxury .headline {
+    font-size: 58px;
+    letter-spacing: -0.5px;
+}
+
+.theme-luxury .section-number {
+    font-size: 64px;
+    opacity: 0.15;
+}
+
+.theme-luxury .cta-button {
+    border-radius: 0;
+    border: 2px solid var(--color-accent);
+    background: transparent;
+    color: var(--color-accent);
+}
+
+.theme-luxury .social-card {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* ================================================
+   THEME: CORPORATE
+   ================================================ */
+
+.theme-corporate .hero {
+    min-height: 450px;
+}
+
+.theme-corporate .headline {
+    font-size: 46px;
+}
+
+.theme-corporate .section-number {
+    display: none;
+}
+
+.theme-corporate .section-title {
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.theme-corporate .cta-button {
+    border-radius: 2px;
+    letter-spacing: 2px;
+}
+
+.theme-corporate .social-headline {
+    font-size: 48px;
+}
+
+/* ================================================
+   THEME: MODERN
+   ================================================ */
+
+.theme-modern .hero {
+    background: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        var(--color-secondary) 100%
+    );
+}
+
+.theme-modern .headline {
+    font-size: 48px;
+}
+
+.theme-modern .cta-button {
+    border-radius: 50px;
+    padding: 16px 56px;
+}
+
+.theme-modern .content-section {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.theme-modern .social-card {
+    border-radius: 24px;
+}
+
+.theme-modern .highlight-item {
+    border-radius: 16px;
+    border-left: none;
+    border-bottom: 3px solid var(--color-accent);
+}
+
+/* ================================================
+   PRINT STYLES
+   ================================================ */
+
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .hero {
+        page-break-after: avoid;
+    }
+
+    .content-section {
+        page-break-inside: avoid;
+    }
+
+    .cta-section {
+        page-break-before: avoid;
+    }
+}

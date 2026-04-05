@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ brand.name }} - Social Post</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family={{ font | urlencode }}:wght@400;600;700&family={{ font_body | urlencode }}:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        {{ css }}
+
+        :root {
+            --color-primary: {{ colors.primary }};
+            --color-secondary: {{ colors.secondary }};
+            --color-background: {{ colors.background }};
+            --color-text: {{ colors.text }};
+            --color-accent: {{ colors.accent }};
+            --font-heading: '{{ font }}', serif;
+            --font-body: '{{ font_body }}', sans-serif;
+        }
+    </style>
+</head>
+<body class="social-post theme-{{ theme }}">
+    <div class="social-card">
+        <!-- Header Bar -->
+        <div class="social-header">
+            <div class="brand-mark">{{ brand.name[0] }}</div>
+            <span class="brand-name-small">{{ brand.name }}</span>
+        </div>
+
+        <!-- Main Content -->
+        <div class="social-body">
+            <h1 class="social-headline">{{ content.headline }}</h1>
+            <p class="social-subheadline">{{ content.subheadline }}</p>
+
+            {% if content.sections %}
+            <div class="social-highlights">
+                {% for section in content.sections[:2] %}
+                <div class="highlight-item">
+                    <span class="highlight-icon">✦</span>
+                    <p class="highlight-text">{{ section.text }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- CTA Footer -->
+        <div class="social-footer">
+            <p class="social-cta">{{ content.cta }}</p>
+            <div class="social-arrow">→</div>
+        </div>
+    </div>
+</body>
+</html>
