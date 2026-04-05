@@ -10,7 +10,6 @@ Run with: uvicorn main:app --reload
 import logging
 import os
 from datetime import datetime, timezone
-from functools import lru_cache
 from hashlib import sha256
 from typing import Dict, List
 

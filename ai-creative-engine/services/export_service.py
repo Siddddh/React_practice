@@ -73,12 +73,17 @@ def _generate_filename(brand_key: str, variation_index: int, extension: str) -> 
     Returns:
         Tuple of (absolute file path, relative URL path).
     """
-    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S_%f")
     filename = f"{timestamp}_v{variation_index}.{extension}"
     brand_dir = _ensure_output_dir(brand_key)
     filepath = os.path.join(brand_dir, filename)
-    url_path = f"/outputs/{brand_key}/{filename}"
-    return filepath, url_path
+    # Final safety check: ensure filepath remains under OUTPUT_DIR
+    resolved_filepath = os.path.realpath(filepath)
+    if not resolved_filepath.startswith(os.path.realpath(OUTPUT_DIR)):
+        raise ValueError("Generated file path escapes the output directory.")
+    safe_key = _sanitize_brand_key(brand_key)
+    url_path = f"/outputs/{safe_key}/{filename}"
+    return resolved_filepath, url_path
 
 
 def export_pdf(html_content: str, brand_key: str, variation_index: int) -> str:

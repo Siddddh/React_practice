@@ -11,7 +11,7 @@ from typing import Any, Dict, List
 
 import openai
 
-from config import OPENAI_API_KEY, OPENAI_MODEL, NUM_VARIATIONS
+from config import OPENAI_API_KEY, OPENAI_MODEL, OPENAI_TEMPERATURE, OPENAI_MAX_TOKENS, NUM_VARIATIONS
 from models.schemas import GeneratedContent
 
 logger = logging.getLogger(__name__)
@@ -149,8 +149,8 @@ async def generate_content(
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
             ],
-            temperature=0.8,
-            max_tokens=2000,
+            temperature=OPENAI_TEMPERATURE,
+            max_tokens=OPENAI_MAX_TOKENS,
         )
     except openai.APIError as e:
         logger.error("OpenAI API error: %s", e)

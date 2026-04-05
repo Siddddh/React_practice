@@ -5,7 +5,7 @@ Contains brand definitions, application settings, and OpenAI configuration.
 """
 
 import os
-from typing import Dict, Any
+from typing import Any, Dict, List, Optional
 
 # OpenAI Configuration
 OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
@@ -18,6 +18,10 @@ STATIC_DIR: str = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stat
 
 # Number of variations to generate per request
 NUM_VARIATIONS: int = 3
+
+# OpenAI generation parameters
+OPENAI_TEMPERATURE: float = 0.8
+OPENAI_MAX_TOKENS: int = 2000
 
 # Brand System
 BRANDS: Dict[str, Dict[str, Any]] = {
@@ -84,7 +88,7 @@ BRANDS: Dict[str, Dict[str, Any]] = {
 }
 
 
-def get_brand(brand_key: str) -> Dict[str, Any] | None:
+def get_brand(brand_key: str) -> Optional[Dict[str, Any]]:
     """
     Retrieve brand configuration by key.
 
@@ -97,7 +101,7 @@ def get_brand(brand_key: str) -> Dict[str, Any] | None:
     return BRANDS.get(brand_key)
 
 
-def get_all_brand_keys() -> list[str]:
+def get_all_brand_keys() -> List[str]:
     """
     Get a list of all available brand keys.
 
